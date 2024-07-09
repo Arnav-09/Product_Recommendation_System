@@ -1,0 +1,85 @@
+<html>
+
+<head>
+
+<title>PRS</title>
+
+<style>
+
+body{
+background-image: url("../static/116316-abstract-cyan-defocused-background-design.jpg");
+Background-size: cover;
+}
+
+form{
+text-align: center
+}
+
+input{
+width: 25%
+}
+
+input[type=submit]{
+	background-color: green;
+	color: white;
+	width: 10%
+}
+
+label {
+	font-size: 20px;
+	display: inline_block;
+	width: 150px;
+	text-align: right;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<center><h1>Product Recommendation</h1></center>
+
+<form action="{{url_for('recommend')}}" method="post">
+
+<label for = "pname">Product Name</label>
+<input type = 'text' id = 'pname' name = 'pn', required = 'required', placeholder = "Write your product's name here">
+
+<br></br>
+
+<label for = "aboutp">About Product</label>
+<input type = 'text' id = 'aboutp' name = 'ap', required = 'required', placeholder = "Write your product's description here">
+
+<br></br>
+
+<label for = "price">Price</label>
+<input type = 'text' id = 'price' name = 'dp', required = 'required', placeholder = "Write your product's price here">
+
+<br></br>
+
+<label for = "rating">Rating</label>
+<input type = 'text' id = 'rating' name = 'rate', required = 'required', placeholder = "Write your product's rating here">
+
+<br></br>
+
+<label for = "ratingCount">Rating Count</label>
+<input type = 'text' id = 'ratingCount' name = 'rateC', required = 'required', placeholder = "Write your product's rating count here">
+
+<br></br>
+
+<label for = "sentiment_analysis">Sentiment Analysis</label>
+<select id="sentiment_analysis" name="Sentiment Analysis">
+	<option value="1">No</option>
+	<option value="0">Yes</option>
+</select>
+
+<br></br>
+
+<label></label>
+<input id = "submit" type = "submit" value = "Give Recommendations" ></input>
+
+</form>
+
+</body>
+
+</html>

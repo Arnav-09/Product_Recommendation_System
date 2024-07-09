@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Recommendations</title>
+    <style>
+        /* ... (your existing styles) */
+
+        .recommendation-block {
+            width: 80%;  /* You can adjust the width as needed */
+            margin: auto;  /* Center the block */
+            border: 1px solid #ccc;  /* Add a border for better visibility */
+            padding: 20px;  /* Add some padding for space */
+            margin-bottom: 20px;  /* Add margin to the bottom for separation */
+        }
+
+        .bar-plot-img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Recommendations</h1>
+
+    {% for _, product in fdf.iterrows() %}
+    <div class="recommendation-block">
+        <p class="product-name">{{ product['product_name'] }}</p>
+        <p><strong>Price:</strong> <span class="price">{{ product['discounted_price'] }}</span></p>
+        <p><strong>Rating:</strong> <span class="rating">{{ product['rating'] }}</span></p>
+    </div>
+	{% endfor %}
+
+    <!-- Display bar plots with dashed lines for the top 5 recommended products -->
+    {% if bar_plot_rating %}
+        <div class="recommendation-block">
+            <h2>Ratings</h2>
+            <img class="bar-plot-img" src="data:image/png;base64,{{ bar_plot_rating }}" alt="Bar Plot Rating">
+        </div>
+    {% endif %}
+
+    {% if bar_plot_price %}
+        <div class="recommendation-block">
+            <h2>Prices</h2>
+            <img class="bar-plot-img" src="data:image/png;base64,{{ bar_plot_price }}" alt="Bar Plot Discounted Price">
+        </div>
+    {% endif %}
+
+    {% if bar_plot_rating_count %}
+        <div class="recommendation-block">
+            <h2>Rating Count</h2>
+            <img class="bar-plot-img" src="data:image/png;base64,{{ bar_plot_rating_count }}" alt="Bar Plot Rating Count">
+        </div>
+    {% endif %}
+
+</body>
+</html>
